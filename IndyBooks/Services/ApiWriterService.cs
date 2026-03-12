@@ -12,7 +12,7 @@ public class ApiWriterService : IWriterService
     public List<Book> GetAllBooksByWriter(long id) 
     {
         //TODO: Implement the method GetAllBooksByWriter for IWriterService
-        return new List<Book>();
+        return new List<Book>(_db.Books.Where(b => b.AuthorId == id));
     }
    
     public List<Writer> GetWriterList()

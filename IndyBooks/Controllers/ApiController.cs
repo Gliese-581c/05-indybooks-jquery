@@ -14,13 +14,14 @@ namespace IndyBooks.Controllers
                     Be sure it passes the ApiWriterTests  BOOK COUNT TEST
          */
         //TODO: Write the [HttpGet] annotation with the API route for this call
-       
+        [Route("writers/{id}/bookcount")]
+        [HttpGet]
         public IActionResult GetAuthorBookCount(long id)
         {
             //TODO: return NotFound if their are no writers in the db with the id
-            
-            //TODO: return OK with the AJAX data as a new object, e.g.,{ Count = 3, Id = 5 } for the given writer         
-            return Ok();
+            if (_writerService.GetWriterById(id) == null) { return NotFound(); }
+            //TODO: return OK with the AJAX data as a new object, e.g.,{ Count = 3, Id = 5 } for the given writer
+            return Ok( new {id = id, count = _writerService.GetAllBooksByWriter(id).Count} );
         }
         /**
          * READ ALL: Retrieves a collection of writers
