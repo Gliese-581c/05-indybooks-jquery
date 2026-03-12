@@ -21,7 +21,7 @@ namespace IndyBooks.Controllers
             //TODO: return NotFound if their are no writers in the db with the id
             if (_writerService.GetWriterById(id) == null) { return NotFound(); }
             //TODO: return OK with the AJAX data as a new object, e.g.,{ Count = 3, Id = 5 } for the given writer
-            return Ok( new {id = id, count = _writerService.GetAllBooksByWriter(id).Count} );
+            return Ok( new {Id = id, Count = _writerService.GetAllBooksByWriter(id).Count} );
         }
         /**
          * READ ALL: Retrieves a collection of writers
